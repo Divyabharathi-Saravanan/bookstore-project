@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Shopping Cart</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .total { font-size: 20px; font-weight: bold; margin-top: 20px; }
+        .btn-checkout { background-color: #2196F3; color: white; padding: 10px 20px; text-decoration: none; display: inline-block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${cart}">
+                <td th:text="${book.title}"></td>
+                <td th:text="${'$' + book.price}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="total">Total: $<span th:text="${total}"></span></div>
+    <a href="/checkout" class="btn-checkout">Confirm & Pay</a>
+    <br><br>
+    <a href="/inventory">Keep Shopping</a>
+</body>
+</html>

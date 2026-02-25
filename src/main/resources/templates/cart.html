@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Shopping Cart</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* ADDED BACKGROUND IMAGE HERE */
+            background-image: url('/image/background.jpeg');
+            background-color: #cdc7c7;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cart-container {
+            background: rgba(255, 255, 255, 0.9); /* White with transparency */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        h2 { text-align: center; color: #333; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th { background-color: #f8f9fa; }
+
+        .total-section {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .btn-checkout {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            float: right;
+            margin-top: 10px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cart-container">
+    <h2>Your Shopping Cart</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Author</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${cartItems}">
+                <td th:text="${item.title}">Title</td>
+                <td th:text="${item.author}">Author</td>
+                <td th:text="${item.price}">0.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="total-section">
+        Total: $<span th:text="${total}">0.00</span>
+    </div>
+
+    <a th:href="@{/order-success}" class="btn-checkout">Confirm & Pay</a>
+    <br>
+    <a href="/inventory-view" class="btn-back">← Back to Bookstore</a>
+</div>
+
+</body>
+</html>
