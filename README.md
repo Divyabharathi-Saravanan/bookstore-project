@@ -28,4 +28,4 @@ It allows users to register, login, add books, edit books, manage cart, and view
 1. Clone the repository
 2. Open in IntelliJ / Eclipse
 3. Run BookstoreProjectApplication.java
-4. Open browser: http://localhost:8082
+4. Open browser: http://localhost:8081
